@@ -36,7 +36,7 @@ public class PostEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
-  private UserEntity user;
+  private String user;
 
   @Column(name = "edited_at")
   private Instant editedAt;
@@ -49,7 +49,7 @@ public class PostEntity {
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "post_mentions", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<UserEntity> mentions;
+  private List<String> mentions;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "reply_to_id")

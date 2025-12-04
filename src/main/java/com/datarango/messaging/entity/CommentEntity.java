@@ -28,7 +28,7 @@ public class CommentEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
-  private UserEntity user;
+  private String user;
 
   @Column(name = "edited_at")
   private Instant editedAt;
@@ -38,7 +38,7 @@ public class CommentEntity {
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "comment_mentions", joinColumns = @JoinColumn(name = "comment_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<UserEntity> mentions;
+  private List<String> mentions;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "reply_to_id")

@@ -36,7 +36,7 @@ public class ChatEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "created_by_id", nullable = false)
-  private UserEntity createdBy;
+  private String createdBy;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinColumn(name = "chat_id")
@@ -44,15 +44,15 @@ public class ChatEntity {
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "chat_participants", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<UserEntity> participants;
+  private List<String> participants;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "chat_admins", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<UserEntity> admin;
+  private List<String> admin;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "chat_muted_by", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<UserEntity> mutedBy;
+  private List<String> mutedBy;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "pinned_post_id")
