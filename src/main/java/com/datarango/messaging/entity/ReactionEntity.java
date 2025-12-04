@@ -18,8 +18,7 @@ public class ReactionEntity {
   @Column(name = "type", nullable = false)
   private ReactionType type;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id", nullable = false)
+  @Column(name = "user_id", nullable = false)
   private String user;
 
   @Column(name = "created_at", nullable = false)

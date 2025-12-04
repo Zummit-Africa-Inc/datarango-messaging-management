@@ -34,24 +34,26 @@ public class ChatEntity {
   @Column(name = "last_activity_at", nullable = false)
   private Instant lastActivityAt;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "created_by_id", nullable = false)
+  @Column(name = "created_by_id", nullable = false)
   private String createdBy;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinColumn(name = "chat_id")
   private List<PostEntity> posts;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "chat_participants", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "chat_participants", joinColumns = @JoinColumn(name = "chat_id"))
+  @Column(name = "user_id")
   private List<String> participants;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "chat_admins", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "chat_admins", joinColumns = @JoinColumn(name = "chat_id"))
+  @Column(name = "user_id")
   private List<String> admin;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "chat_muted_by", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "chat_muted_by", joinColumns = @JoinColumn(name = "chat_id"))
+  @Column(name = "user_id")
   private List<String> mutedBy;
 
   @OneToOne(fetch = FetchType.LAZY)

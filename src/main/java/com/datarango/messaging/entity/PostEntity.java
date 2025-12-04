@@ -34,8 +34,7 @@ public class PostEntity {
   @JoinColumn(name = "post_id")
   private List<ReactionEntity> likes;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id", nullable = false)
+  @Column(name = "user_id", nullable = false)
   private String user;
 
   @Column(name = "edited_at")
@@ -47,8 +46,9 @@ public class PostEntity {
   @Column(name = "is_edited", nullable = false)
   private Boolean isEdited = false;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "post_mentions", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "post_mentions", joinColumns = @JoinColumn(name = "post_id"))
+  @Column(name = "user_id")
   private List<String> mentions;
 
   @ManyToOne(fetch = FetchType.LAZY)
