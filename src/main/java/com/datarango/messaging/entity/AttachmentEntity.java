@@ -20,10 +20,11 @@ public class AttachmentEntity {
   @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "key", nullable = false)
+  @Column(name = "file_key", nullable = false)
   private String key;
 
-  @Column(name = "url", nullable = false)
+
+    @Column(name = "url", nullable = false)
   private String url;
 
   @Column(name = "mime_type", nullable = false)
