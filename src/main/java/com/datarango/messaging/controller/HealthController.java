@@ -10,11 +10,11 @@ public class HealthController {
 
   @GetMapping("/")
   public ApiResponse<Object> welcome() {
-    return ApiResponse.success("Welcome to Datarango User service", null);
+    return ApiResponse.success("Welcome to Datarango Messaging service", null);
   }
 
   @GetMapping("/health")
   public ApiResponse<Object> health() {
-    return ApiResponse.success("User service is healthy", null);
+    return ApiResponse.success("Messaging service is healthy", null);
   }
 }
