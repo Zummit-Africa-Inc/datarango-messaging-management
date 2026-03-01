@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: messaging-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    discovery:
+      enabled: false
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+app:
+  frontend:
+    url: http://localhost:3001
+
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=testaccount;AccountKey=dGVzdGtleQ==;EndpointSuffix=core.windows.net
+    container-name: test-container
+
+oauth:
+  google:
+    client-id: test-google-client-id
+    client-secret: test-google-client-secret
+  github:
+    client-id: test-github-client-id
+    client-secret: test-github-client-secret
+
+microservices:
+  urls:
+    api-gateway: http://localhost:9090
+    user-service: http://localhost:9091
+    core-service: http://localhost:9092
+    streaming-service: http://localhost:9093
+    messaging-service: http://localhost:9094
+
+sendgrid:
+  api-key: test-api-key
+  from-email: test@example.com
+  from-name: Test App
+
+eureka:
+  client:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  health:
+    redis:
+      enabled: false
+    db:
+      enabled: true
