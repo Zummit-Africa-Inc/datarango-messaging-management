@@ -5,7 +5,7 @@ server:
 
 app:
   frontend:
-    url: ${APP_URL:http://localhostL:3001}
+    url: ${APP_URL:http://localhost:3001}
 
 spring:
   datasource:
